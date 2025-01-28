@@ -199,11 +199,7 @@ export default function Header() {
                 All Product
               </Button>
             </Link>
-            <Link to="/order">
-              <Button variant="link" className="px-2 py-1 text-xs">
-                Order
-              </Button>
-            </Link>
+
             <CartSheet />
           </div>
           <div className="flex gap-2">

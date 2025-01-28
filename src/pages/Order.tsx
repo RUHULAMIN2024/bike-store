@@ -40,44 +40,78 @@ export default function OrderDetails() {
     <Skeleton />
   ) : (
     <Container>
-      <div className="mx-auto p-10 columns-1 divide-y divide-x">
-        {orderData?.map((order) => (
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <h3 className="font-semibold">Customer Information</h3>
-              <p>User ID: {order?.user}</p>
-              <p>Order Date: {new Date(order?.createdAt).toLocaleString()}</p>
-              <p>Last Updated: {new Date(order?.updatedAt).toLocaleString()}</p>
+      <div className="mx-auto mb-5 space-y-5">
+        <h1 className="text-3xl font-bold text-center text-gray-900 mb-8">
+          Order Details
+        </h1>
+        {orderData?.map((order, index) => (
+          <div
+            key={index}
+            className="p-6 bg-white shadow-md rounded-lg border border-gray-200"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <h3 className="text-xl font-bold text-gray-800 mb-4">
+                  Customer Information
+                </h3>
+                <p className="text-gray-600">User ID: {order?.user}</p>
+                <p className="text-gray-600">
+                  Order Date: {new Date(order?.createdAt).toLocaleString()}
+                </p>
+                <p className="text-gray-600">
+                  Last Updated: {new Date(order?.updatedAt).toLocaleString()}
+                </p>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-gray-800 mb-4">
+                  Order Summary
+                </h3>
+                <p className="text-gray-600">
+                  Total Price: ${order?.totalPrice?.toFixed(2)}
+                </p>
+                <p className="text-gray-600">
+                  Status:{" "}
+                  <Badge
+                    variant={
+                      order?.status === "Pending" ? "outline" : "default"
+                    }
+                  >
+                    {order?.status}
+                  </Badge>
+                </p>
+              </div>
             </div>
-            <div>
-              <h3 className="font-semibold">Order Summary</h3>
-              <p>Total Price: ${order?.totalPrice?.toFixed(2)}</p>
-              <p>
-                Status:{" "}
-                <Badge
-                  variant={order?.status === "Pending" ? "outline" : "default"}
-                >
-                  {order?.status}
-                </Badge>
-              </p>
-            </div>
-            <div className="">
-              <h3 className="font-semibold">Products</h3>
-              <ul>
-                {order?.products?.map((product, i) => (
-                  <li key={i}>
-                    Product ID: {product?.product}, Quantity:{" "}
-                    {product?.quantity}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="">
-              <h3 className="font-semibold">Transaction Details</h3>
-              <p>Transaction ID: {order?.transaction?.id}</p>
-              <p>Payment Method: {order?.transaction?.method}</p>
-              <p>Transaction Date: {order?.transaction?.date_time}</p>
-              <p>Transaction Status: {order?.transaction?.bank_status}</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <h3 className="text-xl font-bold text-gray-800 mb-4">
+                  Products
+                </h3>
+                <ul className="list-disc pl-5 space-y-2">
+                  {order?.products?.map((product, i) => (
+                    <li key={i} className="text-gray-600">
+                      Product ID: {product?.product}, Quantity:{" "}
+                      {product?.quantity}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-gray-800 mb-4">
+                  Transaction Details
+                </h3>
+                <p className="text-gray-600">
+                  Transaction ID: {order?.transaction?.id}
+                </p>
+                <p className="text-gray-600">
+                  Payment Method: {order?.transaction?.method}
+                </p>
+                <p className="text-gray-600">
+                  Transaction Date: {order?.transaction?.date_time}
+                </p>
+                <p className="text-gray-600">
+                  Transaction Status: {order?.transaction?.bank_status}
+                </p>
+              </div>
             </div>
           </div>
         ))}
