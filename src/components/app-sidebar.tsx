@@ -1,11 +1,4 @@
-import {
-  Home,
-  Package,
-  Settings,
-  ShoppingCart,
-  User,
-  Users,
-} from "lucide-react";
+import { Home, Package, ShoppingCart, User, Users } from "lucide-react";
 
 import {
   Sidebar,
@@ -24,59 +17,47 @@ import { selectCurrentUser } from "@/redux/services/auth/authSlice";
 // Menu items.
 const adminRoute = [
   {
-    title: "Home",
+    title: "Back Home",
     url: "/",
     icon: Home,
   },
   {
-    title: "Profile",
+    title: "My Profile",
     url: "/dashboard",
     icon: User,
   },
   {
-    title: "Products",
-    url: "/dashboard/product",
+    title: "Manage Products",
+    url: "/dashboard/manage-products",
     icon: Package,
   },
   {
-    title: "Users",
-    url: "/dashboard/user",
+    title: "Manage Users",
+    url: "/dashboard/manage-users",
     icon: Users,
   },
   {
-    title: "Orders",
-    url: "/dashboard/order",
+    title: "Manage Orders",
+    url: "/dashboard/manage-orders",
     icon: ShoppingCart,
-  },
-
-  {
-    title: "Settings",
-    url: "#",
-    icon: Settings,
   },
 ];
 
 const customerRoute = [
   {
-    title: "Home",
+    title: "Back Home",
     url: "/",
     icon: Home,
   },
   {
-    title: "Profile",
+    title: "My Profile",
     url: "/dashboard",
     icon: User,
   },
   {
-    title: "Order",
-    url: "/dashboard/order",
+    title: "My Order",
+    url: "/dashboard/my-order",
     icon: ShoppingCart,
-  },
-
-  {
-    title: "Settings",
-    url: "#",
-    icon: Settings,
   },
 ];
 

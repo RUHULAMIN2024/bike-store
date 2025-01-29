@@ -9,8 +9,26 @@ const orderApi = baseApi.injectEndpoints({
         body: userInfo,
       }),
     }),
+
     getOrders: builder.query({
       query: () => "/order",
+    }),
+    updateOrderStatus: builder.mutation({
+      query: ({ id, status }) => ({
+        url: `/order/${id}/status`,
+        method: "PUT",
+        body: { status },
+      }),
+    }),
+    deleteOrder: builder.mutation({
+      query: (id) => ({
+        url: `/order/${id}`,
+        method: "DELETE",
+      }),
+    }),
+
+    MyOrders: builder.query({
+      query: () => "/order/my-order",
     }),
     verifyOrder: builder.query({
       query: (order_id) => ({
@@ -25,5 +43,8 @@ const orderApi = baseApi.injectEndpoints({
 export const {
   useCreateOrderMutation,
   useGetOrdersQuery,
+  useMyOrdersQuery,
   useVerifyOrderQuery,
+  useDeleteOrderMutation,
+  useUpdateOrderStatusMutation,
 } = orderApi;

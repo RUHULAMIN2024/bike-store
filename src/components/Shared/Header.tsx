@@ -30,8 +30,8 @@ import {
 } from "../ui/dropdown-menu";
 import { useCreateOrderMutation } from "@/redux/services/order/order";
 import { toast } from "sonner";
-import { ModeToggle } from "../mode-toggle";
 import Container from "../Container";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 const CartSheet = () => {
   const dispatch = useAppDispatch();
@@ -179,11 +179,11 @@ export default function Header() {
   return (
     <Container>
       <div>
-        <header className="flex justify-between h-20 w-full shrink-0 items-center px-4 md:px-6">
+        <header className=" flex h-20 w-full shrink-0 items-center px-4 md:px-6">
           <Link to="/" className="mr-6 hidden lg:flex">
             <img className="  w-10" src={icon} alt="icon" />
           </Link>
-          <div className="flex gap-2">
+          <div className="ml-auto flex gap-2">
             <Link to="/">
               <Button variant="link" className="px-2 py-1 text-xs">
                 Home
@@ -201,13 +201,21 @@ export default function Header() {
             </Link>
 
             <CartSheet />
-          </div>
-          <div className="flex gap-2">
             {user ? (
               <DropdownMenu>
-                <DropdownMenuTrigger>{user.email}</DropdownMenuTrigger>
+                <DropdownMenuTrigger>
+                  <Avatar>
+                    <AvatarImage
+                      src={"https://via.placeholder.com/40"}
+                      alt={user.email}
+                    />
+                    <AvatarFallback className="font-extrabold">
+                      {user.email.charAt(0).toUpperCase()}
+                    </AvatarFallback>
+                  </Avatar>
+                </DropdownMenuTrigger>{" "}
                 <DropdownMenuContent>
-                  <DropdownMenuLabel>{user.role}</DropdownMenuLabel>
+                  <DropdownMenuLabel>{user.email}</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={() => navigate(`/dashboard`)}>
                     Dashboard
@@ -229,7 +237,6 @@ export default function Header() {
                 </NavLink>
               </>
             )}
-            <ModeToggle />
           </div>
         </header>
       </div>

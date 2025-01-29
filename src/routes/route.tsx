@@ -6,11 +6,14 @@ import Login from "@/pages/Login";
 import About from "@/pages/About";
 import ProductDetails from "@/pages/ProductDetails";
 import AllProducts from "@/pages/AllProducts";
-import OrderDetails from "@/pages/Order";
 import OrderVerification from "@/pages/VerifyOrder";
 import PrivetRoute from "./PrivetRoute";
 import Layout from "@/layout/layout";
 import Profile from "@/pages/dashboard/Profile";
+import MyOrder from "@/pages/dashboard/MyOrder";
+import ManageProducts from "@/pages/dashboard/ManageProducts";
+import ManageUsers from "@/pages/dashboard/ManageUsers";
+import ManageOrders from "@/pages/dashboard/ManageOrder";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -60,10 +63,34 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/dashboard/order",
+        path: "my-order",
         element: (
           <PrivetRoute>
-            <OrderDetails />
+            <MyOrder />
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "manage-orders",
+        element: (
+          <PrivetRoute>
+            <ManageOrders />
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "manage-products",
+        element: (
+          <PrivetRoute>
+            <ManageProducts />
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "manage-users",
+        element: (
+          <PrivetRoute>
+            <ManageUsers />
           </PrivetRoute>
         ),
       },

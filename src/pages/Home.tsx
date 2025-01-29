@@ -12,7 +12,7 @@ const Home = () => {
     refetchOnMountOrArgChange: true,
   });
 
-  const products: IProduct[] = data?.data || [];
+  const products: IProduct[] = data?.data.result || [];
   return (
     <div className="mx-auto">
       <Container>

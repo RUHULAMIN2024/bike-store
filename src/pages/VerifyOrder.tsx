@@ -156,7 +156,7 @@ export default function OrderVerification() {
               </div>
             </CardContent>
             <CardFooter>
-              <Link to="/dashboard/order">
+              <Link to="/dashboard/my-order">
                 <Button className="w-full">View Orders</Button>
               </Link>
             </CardFooter>
