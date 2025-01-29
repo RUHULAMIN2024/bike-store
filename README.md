@@ -1,50 +1,137 @@
-# React + TypeScript + Vite
+# Bike Shop Application - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Overview & Objective
 
-Currently, two official plugins are available:
+The **Bike Shop** application is designed to offer a user-friendly platform for customers to browse and purchase bikes with a seamless user experience. The app includes secure authentication, smooth product management, and a responsive UI. The objective is to ensure that the platform is visually appealing, responsive, and easy to use.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## Main Functionalities
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### 1. **User Registration & Authentication (Role-Based)**
 
-- Configure the top-level `parserOptions` property like this:
+- **Secure Registration and Login**:
+  - Users can register with the following fields: name, email, and password.
+  - Upon registration, the user is assigned a "customer" role by default.
+  - Secure password hashing is implemented before storing in the database.
+  - Users can log in using email and password.
+- **JWT Authentication**:
+  - A JWT token is generated upon login for secure authentication.
+  - The token is stored in local storage to maintain user sessions.
+- **Logout**:
+  - Token is cleared from local storage upon logout.
+  - Redirects users to the login page.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+---
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### 2. **Public Routes**
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- **Home Page**:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+  - Includes a logo, favicon, navigation items, and buttons for login/signup.
+  - Features a carousel banner for promotions.
+  - Displays featured products and a "View All" button to see all products.
+  - Additional sections like testimonials or blogs.
+  - Footer with essential links and contact details.
+
+- **All Products Page**:
+
+  - **Search Functionality**: Users can search by brand, bike name, or category.
+  - **Filters**: Price range, model, brand, category, and availability filters.
+  - **Product Cards**: Display bike details like name, brand, model, price, and category.
+  - "View Details" button for each product.
+
+- **Product Details Page**:
+
+  - Displays detailed product information and an image.
+  - Includes a "Buy Now" button that redirects to the checkout page.
+
+- **About Page**:
+  - Provides information about the bike shop and its mission.
+
+---
+
+### 3. **Private Routes**
+
+- **Checkout Page**:
+
+  - Users can place orders and select products for purchase.
+  - Ensures ordered quantities do not exceed product stock.
+  - **Order Form**: Includes product details, user details, total price, and payment method.
+  - **SurjoPay Payment Integration**: For processing payments.
+  - "Order Now" button to confirm the purchase.
+
+- **Dashboard (Role-Based)**:
+  - **Admin Dashboard**:
+    - Manage users (deactivate accounts), manage products (CRUD), manage orders (CRUD).
+  - **User Dashboard**:
+    - View orders and manage profile settings, including password updates.
+
+---
+
+## UI/UX Design
+
+- **Responsive Design**:
+
+  - The application is responsive and works seamlessly on all screen sizes.
+  - The layout is intuitive and provides good visual alignment and typography.
+
+- **Error Handling**:
+
+  - User-friendly error messages for invalid login credentials, registration errors, or failed operations.
+
+- **Loading States**:
+
+  - Spinners or loading animations during API calls.
+
+- **Toasts**:
+  - Displays success and error messages for actions like successful login, order placement, etc.
+
+---
+
+## Recommendation Functionalities (Optional)
+
+### **Track Order Section (Dashboard)**
+
+#### **User Side**:
+
+- **Track Order Status**:
+
+  - Displays the order status (Pending, Processing, Shipped, Delivered) with a progress bar.
+  - Shows clear labels for each step in the process.
+
+- **Order Tracking Page**:
+  - Users can view order details, such as Order ID, Product name, quantity, price, and delivery date.
+
+#### **Admin Side**:
+
+- **Update Order Status**:
+  - Admins can update the order status through a dropdown in the Admin Dashboard (Pending, Processing, Shipped, Delivered).
+
+---
+
+## Backend Requirements (For Reference)
+
+- **Database**: MongoDB for storing users, products, and orders.
+- **Authentication**: User registration, login, JWT generation, and secure session management.
+- **Product Management**: CRUD operations for managing products.
+- **Order Management**: CRUD operations for managing orders, ensuring stock availability before placing orders.
+- **Payment Integration**: SurjoPay for payment processing.
+- **Error Handling**: Provide consistent error responses for failed operations.
+- **Pagination**: Implement pagination for products and orders.
+
+---
+
+## Installation & Setup
+
+### **Prerequisites**
+
+1. Node.js >= 14.x
+2. npm >= 6.x
+
+### **Steps to Run the Application Locally**
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   ```
