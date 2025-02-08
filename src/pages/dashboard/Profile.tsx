@@ -18,7 +18,7 @@ export default function Profile() {
   const userInfo = useAppSelector(selectCurrentUser);
   const { data } = useGetUserByEmailQuery(userInfo?.email);
 
-  const user = data.data[0];
+  const user = data?.data[0];
   const [updatePassword] = useUpdatePasswordMutation();
 
   const email = userInfo?.email;

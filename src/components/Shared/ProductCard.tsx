@@ -18,6 +18,9 @@ export interface IProduct {
   _id: string;
   name: string;
   price: number;
+  category: string;
+  brand: string;
+  model: string;
   description: string;
   stock: number;
   image?: string;
@@ -27,7 +30,7 @@ export interface IProduct {
 
 export function ProductCard({ product }: { product: IProduct }) {
   return (
-    <div className="mx-auto hover:scale-105 duration-500 shadow-xl min-h-[410px] p-5 rounded-lg mb-8">
+    <div className="mx-auto hover:scale-105 duration-500 shadow-xl p-5 rounded-lg mb-8">
       <div className="lg:grid lg:grid-cols-2  lg:items-start lg:gap-x-8">
         {/* Image */}
         <div className=" h-full object-center object-cover w-full">
